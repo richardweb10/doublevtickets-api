@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    container_name: double-v-tickets
+    restart: always
+    build: .
+    ports:
+      - '3001:3001'
+    external_links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - './data:/data/db'
+    ports:
+      - '27012:27017'
